@@ -1,0 +1,11 @@
+{
+  "name": "apirestsystemjaime",
+  "version": "1.0.0",
+  "description": "API REST Node.js Création d'un système d'avis \"j'aime\" / \"j'aime pas\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Houssine Barhoumi",
+  "license": "ISC"
+}

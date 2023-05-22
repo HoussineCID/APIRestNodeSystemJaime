@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "Hsinaya7788",
+    "database": "database_development_like",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "Hsinaya7788",
+    "database": "database_test_like",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "Hsinaya7788",
+    "database": "database_production_like",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

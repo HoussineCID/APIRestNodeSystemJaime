@@ -2,7 +2,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 // Import du routeur API
-var apiRouter = require('./apiRouter').router;
+var apiRouter = require('./apiRouter');
 
 // Instanciation du serveur
 var server = express();

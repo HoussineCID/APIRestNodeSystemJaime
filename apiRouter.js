@@ -15,4 +15,4 @@ apiRouter.post('/users/login', function(req, res) {
 });
 
 // Export du routeur
-module.exports.router = apiRouter;
+module.exports = apiRouter;

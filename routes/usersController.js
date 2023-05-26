@@ -92,4 +92,33 @@ module.exports = {
     })
 
   },
+  getUserProfile: function (req, res) {
+        //Getting auth header
+        var headerAuth = req.headers['authorization']
+        var userId = jwt.getUserId(headerAuth)
+
+        if(userId < 0 ){
+            return res.status(400).json({error : 'worng token'})
+        }
+
+         User.findOne({
+            //les champs je vais retournee
+            attributes:['id','email', 'username', 'bio'],
+            //condition de retour de requete
+            where : {id : userId}
+
+         }).then (function(user){
+            //data return by requete (user ou data cest le meme )
+            ////////////////////////je vai optimiser le code au lieux de ca 
+                    //  if(user){
+                    //     return res.status(200).json(user)
+                    //  }else{
+                    //     return res.status(404).json({error : 'User not found'})
+                    //  }
+             //////////////////////////////////////////////////////
+             user ? res.status(200).json(user) : res.status(404).json({error : 'User not found'});
+         }).catch(function(){
+              res.status(500).json({error : 'Cannot fetch User'})
+         })
+  }
 };

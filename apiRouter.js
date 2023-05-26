@@ -13,6 +13,9 @@ apiRouter.post('/users/register', function(req, res) {
 apiRouter.post('/users/login', function(req, res) {
   usersCtrl.login(req, res);
 });
+apiRouter.get('/users/userProfile', function(req, res) {
+  usersCtrl.getUserProfile(req, res);
+});
 
 // Export du routeur
 module.exports = apiRouter;

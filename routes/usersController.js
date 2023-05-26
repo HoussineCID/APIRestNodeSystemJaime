@@ -120,5 +120,40 @@ module.exports = {
          }).catch(function(){
               res.status(500).json({error : 'Cannot fetch User'})
          })
+  },
+  updateUserProfileBio: function(req, res) {
+    // Getting auth header
+    var headerAuth = req.headers['authorization'];
+    var userId = jwt.getUserId(headerAuth);
+    var bio = req.body.bio;
+  
+    if (userId < 0) {
+      return res.status(400).json({ error: 'wrong token' });
+    }
+  
+    User.findOne({
+      attributes:['id', 'bio','createdAt','updatedAt'],
+      where: { id: userId }
+    })
+      .then(function(userFound) {
+        if (userFound) {
+          // Update user's bio
+          userFound
+            .update({ bio: bio ? bio : userFound.bio })
+            .then(function() {
+              return res.status(200).json(userFound);
+            })
+            .catch(function(err) {
+              return res.status(500).json({ error: 'cannot update user' });
+            });
+        } else {
+          return res.status(404).json({ error: 'user does not exist' });
+        }
+      })
+      .catch(function(err) {
+        return res.status(500).json({ error: 'unable to verify user' });
+      });
   }
+  
+
 };

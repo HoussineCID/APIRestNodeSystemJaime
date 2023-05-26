@@ -16,6 +16,9 @@ apiRouter.post('/users/login', function(req, res) {
 apiRouter.get('/users/userProfile', function(req, res) {
   usersCtrl.getUserProfile(req, res);
 });
+apiRouter.put('/users/updateBio', function(req, res) {
+  usersCtrl.updateUserProfileBio(req, res);
+});
 
 // Export du routeur
 module.exports = apiRouter;

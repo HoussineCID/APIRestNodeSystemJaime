@@ -24,5 +24,8 @@ apiRouter.put('/users/updateBio', function(req, res) {
 apiRouter.post('/messages/newMessage', function(req, res) {
   messageCtrl.createMessage(req, res);
 });
+apiRouter.get('/messages', function(req, res) {
+  messageCtrl.listMessage(req, res);
+});
 // Export du routeur
 module.exports = apiRouter;

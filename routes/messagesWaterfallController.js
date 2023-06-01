@@ -53,6 +53,28 @@ module.exports={
 
     },
     listMessage:(req, res)=>{
+        var fields = req.query.fields;
+        var limit = parseInt(req.query.limit)
+        var offset =parseInt(req.query.offset)
+        var order = req.query.order;
 
+        Message.findAll({
+            order:[(order !=null)? order.split(':') : ['title','ASC']],
+            limit:(!isNaN(limit))? limit : null,
+            offset:(!isNaN(offset))? offset : null,
+            attributes:(fields!=='*' && fields !=null) ? fields.split(',') :null,
+            include: [{
+                model : User,
+                as: 'user',
+                attributes:['username']
+            }]
+
+
+        }).then((messages)=>{
+            messages ? res.status(200).json(messages) : res.status(404).json({error : 'no messages found'})
+        }).catch((err)=>{
+            console.log(err)
+             res.status(500).json({"error" : "invalid fields"})
+        })
     }
 }

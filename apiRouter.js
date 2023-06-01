@@ -20,7 +20,7 @@ apiRouter.put('/users/updateBio', function(req, res) {
   usersCtrl.updateUserProfileBio(req, res);
 });
 
-//messages routes
+//messages routes 
 apiRouter.post('/messages/newMessage', function(req, res) {
   messageCtrl.createMessage(req, res);
 });

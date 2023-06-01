@@ -52,6 +52,7 @@ module.exports={
        })
 
     },
+    /////////cette partie dispaly list message 
     listMessage:(req, res)=>{
         var fields = req.query.fields;
         var limit = parseInt(req.query.limit)

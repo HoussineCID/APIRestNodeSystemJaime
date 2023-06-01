@@ -24,6 +24,7 @@ apiRouter.put('/users/updateBio', function(req, res) {
 apiRouter.post('/messages/newMessage', function(req, res) {
   messageCtrl.createMessage(req, res);
 });
+//routes listes message
 apiRouter.get('/messages', function(req, res) {
   messageCtrl.listMessage(req, res);
 });

@@ -66,10 +66,8 @@ module.exports={
             attributes:(fields!=='*' && fields !=null) ? fields.split(',') :null,
             include: [{
                 model : User,
-                as: 'user',
                 attributes:['username']
             }]
-
 
         }).then((messages)=>{
             messages ? res.status(200).json(messages) : res.status(404).json({error : 'no messages found'})

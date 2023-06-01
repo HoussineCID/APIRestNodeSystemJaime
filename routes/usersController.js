@@ -30,7 +30,7 @@ module.exports = {
 
     User.findOne({ where: { email: email } })
       .then(function (userFound) {
-      console.log(userFound.dataValues);
+
         if (!userFound) {
             /////crypter password b
           bcrypt.hash(password, 5, function (err, bcryptedPassword) {

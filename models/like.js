@@ -16,23 +16,36 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'messageId',
         allowNull:false
       });
-      
+
      //////////////////////////////////
-     models.Message.belongsToMany(models.user, { 
-        through:Like,
+     models.Message.belongsToMany(models.User, { 
+        through:models.Like,
         foreignKey: 'messageId',
         otherKey:'userId'
       });
-      models.user.belongsToMany(models.Message, { 
-        through:Like,
+  
+      models.User.belongsToMany(models.Message, { 
+        through:models.Like,
         foreignKey: 'userId',
         otherKey:'messageId'
       });
     }
   }
   Like.init({
-    messageId: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER
+    messageId:{
+      type :  DataTypes.INTEGER,
+      references:{
+        model: 'Message',
+        key: 'id'
+      }
+    },
+    userId:{
+      type :  DataTypes.INTEGER,
+      references:{
+        model: 'User',
+        key: 'id'
+      }
+    }
   }, {
     sequelize,
     modelName: 'Like',

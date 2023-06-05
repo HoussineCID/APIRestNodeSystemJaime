@@ -33,5 +33,8 @@ apiRouter.get('/messages', function(req, res) {
 apiRouter.post('/messages/:messageId/like', function(req, res) {
   likeCtrl.likePost(req, res);
 });
+apiRouter.post('/messages/:messageId/dislike', function(req, res) {
+  likeCtrl.dislikePost(req, res);
+});
 // Export du routeur
 module.exports = apiRouter;

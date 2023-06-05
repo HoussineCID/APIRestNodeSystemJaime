@@ -2,6 +2,7 @@
 var express = require('express');
 var usersCtrl = require('./routes/usersController');
 var messageCtrl=require ('./routes/messagesWaterfallController')
+var likeCtrl =require('./routes/likeController')
 // Router
 var apiRouter = express.Router();
 
@@ -27,6 +28,10 @@ apiRouter.post('/messages/newMessage', function(req, res) {
 //routes listes message
 apiRouter.get('/messages', function(req, res) {
   messageCtrl.listMessage(req, res);
+});
+//likes routes 
+apiRouter.post('/messages/:messageId/like', function(req, res) {
+  likeCtrl.likePost(req, res);
 });
 // Export du routeur
 module.exports = apiRouter;
